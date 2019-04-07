@@ -1,13 +1,15 @@
 def fecha_es_tupla(_fecha):
     result = True
-    if not isinstance(_fecha, tuple):
-        result = False
+    if  isinstance(_fecha, tuple) and len(_fecha) == 3:
 
-    anho = _fecha[0]
-    mes = _fecha[1]
-    dia = _fecha[2]
+        anho = _fecha[0]
+        mes = _fecha[1]
+        dia = _fecha[2]
 
-    if not are_integers(anho,mes,dia):
+        if not are_integers(anho,mes,dia):
+            result = False
+
+    else:
         result = False
     return result
 
@@ -35,4 +37,6 @@ def dia_valido(_dia, _anho):
     #elif (_dia)
 
 
-fecha_es_tupla(1)
+var = (2,2,2)
+
+print(fecha_es_tupla(var))
