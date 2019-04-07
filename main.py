@@ -37,9 +37,15 @@ def bisiesto(_anho):
     result = False
 
     if _anho%4 == 0:
-        if _anho%100 ==0 and _anho%400 != 0:
-            return True
+        result = True
+    if _anho%100 == 0:
+        if _anho%400==0:
+            result = True
+        else:
+            result = False
+
     return result
+
 
 
 
@@ -64,4 +70,8 @@ def dia_valido(_dia, _anho):
 
 var = (2,2,2)
 
-print(fecha_es_tupla(var))
+#print(fecha_es_tupla(var))
+
+
+print(bisiesto(2016))
+
