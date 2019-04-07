@@ -1,3 +1,18 @@
+'''
+
+Asignacion #3
+
+
+CALENDARIO GREGORIANO
+
+Daniel Alvarado Bonilla
+Roberto Rojas Segnini
+
+
+
+04/08/2019
+'''
+
 def fecha_es_tupla(_fecha):
     result = True
     if  isinstance(_fecha, tuple) and len(_fecha) == 3:
@@ -16,6 +31,16 @@ def fecha_es_tupla(_fecha):
 
 def are_integers(_var1,_var2,_var3):
     return  isinstance(_var1,int) and  isinstance(_var2,int) and  isinstance(_var3,int)
+
+
+def bisiesto(_anho):
+    result = False
+
+    if _anho%4 == 0:
+        if _anho%100 ==0 and _anho%400 != 0:
+            return True
+    return result
+
 
 
 
