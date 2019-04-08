@@ -1,3 +1,4 @@
+import math
 '''
 
 Asignacion #3
@@ -76,6 +77,17 @@ var = (2,2,2)
 print(bisiesto(2016))
 
 
+#Fuente: https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
+def dia_primero_enero(_anho):
+    k = 1
+    m = 11
+    C = float((_anho//100) + 1)
+    Y = float((_anho-1)%100)
+
+
+    W = (k + math.floor(2.6 * 1 - 0.2) - 2*C + Y + math.floor(Y/4) + math.floor(C/4))%7
+    return W
+
 def dia_siguiente(_fecha):
     #Lista que contiene los meses con 31 dias
     mes_31 = [1,3,5,7,8,10,12]
@@ -130,4 +142,5 @@ def imprimir_3x4_aux(_anho, _fecha):
     print (_fecha)
     return imprimir_3x4_aux(_anho, dia_siguiente(_fecha))
 
-imprimir_3x4(2019)
+imprimir_3x4(2013)
+print(dia_primero_enero(2016))
