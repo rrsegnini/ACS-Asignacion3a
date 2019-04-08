@@ -75,3 +75,59 @@ var = (2,2,2)
 
 print(bisiesto(2016))
 
+
+def dia_siguiente(_fecha):
+    #Lista que contiene los meses con 31 dias
+    mes_31 = [1,3,5,7,8,10,12]
+
+    #Lista que contiene los meses con 30 dias
+    mes_30 = [4,6,9,11]
+
+    #if fecha_es_valida(_fecha):
+    anho = _fecha[0]
+    mes = _fecha[1]
+    dia = _fecha[2]
+
+    sig_anho = anho
+    sig_mes = mes
+    sig_dia = dia
+
+    if dia == 31 and mes == 12:
+        sig_anho = anho + 1
+        sig_mes = 1
+        sig_dia = 1
+    elif mes == 2:
+        if bisiesto(anho) and dia == 29:
+            sig_mes = 3
+            sig_dia = 1
+        elif bisiesto(anho) and dia <= 29:
+            sig_dia = dia + 1
+        elif dia == 28:
+            sig_mes = 3
+            sig_dia = 1
+        else:
+            sig_dia = dia + 1
+
+    elif mes in mes_31 and dia == 31:
+        sig_dia = 1
+        sig_mes = mes + 1
+    elif mes in mes_30 and dia == 30:
+        sig_dia = 1
+        sig_mes = mes + 1
+    else:
+        sig_dia = dia + 1
+
+    return (sig_anho,sig_mes,sig_dia)
+
+
+
+def imprimir_3x4(_anho):
+    return imprimir_3x4_aux(_anho,(_anho,1,1))
+
+def imprimir_3x4_aux(_anho, _fecha):
+    if _fecha[0] != _anho:
+        return (0,0,0)
+    print (_fecha)
+    return imprimir_3x4_aux(_anho, dia_siguiente(_fecha))
+
+imprimir_3x4(2019)
