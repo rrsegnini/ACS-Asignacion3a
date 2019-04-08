@@ -1,4 +1,3 @@
-import math
 '''
 
 Asignacion #3
@@ -13,6 +12,8 @@ Roberto Rojas Segnini
 
 04/08/2019
 '''
+import math
+
 
 def fecha_es_tupla(_fecha):
     result = True
@@ -22,7 +23,7 @@ def fecha_es_tupla(_fecha):
         mes = _fecha[1]
         dia = _fecha[2]
 
-        if not are_integers(anho,mes,dia):
+        if not enteros(anho,mes,dia):
             result = False
 
     else:
@@ -30,7 +31,7 @@ def fecha_es_tupla(_fecha):
     return result
 
 
-def are_integers(_var1,_var2,_var3):
+def enteros(_var1,_var2,_var3):
     return  isinstance(_var1,int) and  isinstance(_var2,int) and  isinstance(_var3,int)
 
 
@@ -48,34 +49,27 @@ def bisiesto(_anho):
     return result
 
 
+def fecha_es_valida(_fecha):
 
+    valida = False
+    if fecha_es_tupla(_fecha):
+        anho = _fecha[0]
+        mes = _fecha[1]
+        dia = _fecha[2]
 
+        if anho >= 1582 and anho <= 9999:
+            if mes >= 1 and mes <= 12:
+                if (dia >= 1 and dia <= 31) and (mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes ==12):
+                    valida = True
+                elif (dia >= 1 and dia <= 30) and (mes == 4 or mes == 6 or mes == 9 or mes == 11):
+                    valida = True
+                elif (dia >= 1 and dia <= 28) and (mes == 2):
+                    valida = True
+                elif (dia >= 1 and dia <= 29) and (mes == 2):
+                    if bisiesto(anho):
+                        valida = True
 
-def anho_valido(_anho):
-    result = True
-
-    if not isinstance(_anho, int):
-        result = False
-
-    elif (_anho < 1582):
-        result = False
-
-    return result
-
-def dia_valido(_dia, _anho):
-    valido = True
-    if (_dia <= 0):
-        valido = False
-    #elif (_dia)
-
-
-var = (2,2,2)
-
-#print(fecha_es_tupla(var))
-
-
-print(bisiesto(2016))
-
+    return valida
 
 #Fuente: https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
 def dia_primero_enero(_anho):
