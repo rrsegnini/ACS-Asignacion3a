@@ -71,6 +71,36 @@ def fecha_es_valida(_fecha):
 
     return valida
 
+
+def dias_desde_primero_enero(_fecha):
+    if not fecha_es_valida(_fecha):
+        return -1
+    d1 = 1
+    mes1 = 1
+    anho = _fecha[0]
+
+    diasMes = [31, 28, 31, 30, 31, 30,
+                 31, 31, 30, 31, 30, 31]
+
+    if bisiesto(anho):
+        diasMes[1] = 29
+
+    mesDado =_fecha[1]
+    diaDado = _fecha[2]
+
+
+    diferencia = 0
+
+    for i in range(mesDado-1):
+        diferencia += diasMes[i]
+        print(i)
+
+    diferencia = (diaDado + diferencia) -1
+
+
+    return diferencia
+
+
 #Fuente: https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
 def dia_primero_enero(_anho):
     k = 1
@@ -136,5 +166,7 @@ def imprimir_3x4_aux(_anho, _fecha):
     print (_fecha)
     return imprimir_3x4_aux(_anho, dia_siguiente(_fecha))
 
-imprimir_3x4(2013)
-print(dia_primero_enero(2016))
+#imprimir_3x4(2013)
+#print(dia_primero_enero(2016))
+
+print(dias_desde_primero_enero((2019,1,3)))
