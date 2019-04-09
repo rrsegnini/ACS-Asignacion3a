@@ -1,6 +1,6 @@
 '''
 
-Asignacion #3
+Asignacion #3a
 
 
 CALENDARIO GREGORIANO
@@ -110,7 +110,7 @@ def dia_primero_enero(_anho):
 
 
     W = (k + math.floor(2.6 * 1 - 0.2) - 2*C + Y + math.floor(Y/4) + math.floor(C/4))%7
-    return W
+    return int(W)
 
 def dia_siguiente(_fecha):
     #Lista que contiene los meses con 31 dias
@@ -158,15 +158,64 @@ def dia_siguiente(_fecha):
 
 
 def imprimir_3x4(_anho):
-    return imprimir_3x4_aux(_anho,(_anho,1,1))
+    meses = [[[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]] for x in range(0, 12)]
+    #print(meses)
+    fecha_actual = (_anho,1,1)
+    cont_mes = 0
+    cont_sem = 0
+    cont_dia = dia_primero_enero(_anho)
+    mes_actual = 1
+    while fecha_actual[0] != _anho+1:
+        #print(fecha_actual)
+        #fecha_actual[1] != cont_mes:
+        if cont_dia>6:
+            cont_dia = 0
+            cont_sem += 1
+        #print(fecha_actual)
+        if mes_actual != fecha_actual[1]:
+            mes_actual = fecha_actual[1]
+            cont_sem = 0
 
-def imprimir_3x4_aux(_anho, _fecha):
-    if _fecha[0] != _anho:
-        return (0,0,0)
-    print (_fecha)
-    return imprimir_3x4_aux(_anho, dia_siguiente(_fecha))
+        #[print(meses[fecha_actual[1]-1])#,cont_sem,cont_dia)
 
-#imprimir_3x4(2013)
-#print(dia_primero_enero(2016))
+        meses[fecha_actual[1]-1][cont_sem][cont_dia] = fecha_actual[2]
+        fecha_actual = dia_siguiente(fecha_actual)
+        cont_mes+=1
+        cont_dia+=1
 
-print(dias_desde_primero_enero((2019,1,3)))
+    print("Calendario del año " + str(_anho) + " D.C.")
+    print("             Enero             |             Febrero           |             Marzo             |             Abril             |")
+    print("   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |")
+    imprimir(meses, 0)
+
+    print("              Mayo             |              Junio            |             Julio             |            Agosto             |")
+    print("   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |")
+    imprimir(meses, 4)
+
+    print("            Setiembre          |             Octubre           |          Noviembre            |          Diciembre            |")
+    print("   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |   D   L   K   M   J   V   S   |")
+    imprimir(meses, 7)
+
+
+def imprimir(meses,mes_inicial):
+    cont_meses = 0
+
+    #for i in range(mes_inicial,mes_final):
+
+    for j in range(0,6):
+        w = (meses[mes_inicial][j] + meses[mes_inicial+2][j] + meses[mes_inicial+3][j] + meses[mes_inicial+4][j])
+        result = ""
+        for dia in w:
+            if dia == 0:
+                result += "   "
+            else:
+                result += str(dia) + "    "
+        print (result + "|")
+        #print  ('{:>4}'.format(result))
+
+
+
+
+#print(dia_siguiente((2019,12,31)))
+imprimir_3x4(2019)
+
