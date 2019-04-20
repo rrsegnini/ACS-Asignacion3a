@@ -72,7 +72,7 @@ def fecha_es_valida(_fecha):
     return valida
 
 
-def dias_desde_primero_enero(_fecha):
+def días_desde_primero_enero(_fecha):
     if not fecha_es_valida(_fecha):
         return -1
     d1 = 1
@@ -215,105 +215,5 @@ def imprimir(meses,mes_inicial):
 
 
 
-
-def fecha_futura(_fecha,_dias):
-    '''
-    Dados una fecha válida f y un número entero no-negativo n, 
-    determinar la fecha que está n días naturales en el futuro. 
-    El resultado debe ser una fecha válida.
-    '''
-    nuevaFecha = _fecha;
-
-    if not fecha_es_valida(_fecha) or _dias <= 0:
-        return -1
-
-    while (_dias!= 0):
-        nuevaFecha = dia_siguiente(nuevaFecha);
-        _dias-=1;
-
-    return nuevaFecha;
-
-
-def obtener_fecha_mayor(_fecha1,_fecha2):
-    anho1 = _fecha1[0]
-    mes1 = _fecha1[1]
-    dia1 = _fecha1[2]
-
-    anho2 = _fecha2[0]
-    mes2 = _fecha2[1]
-    dia2 = _fecha2[2]
-
-    mayor = _fecha1
-    if (anho1 < anho2):
-        mayor = _fecha2
-    elif (anho1== anho2):
-        if (mes1 <mes2):
-            mayor = _fecha2
-        elif(mes1 == mes2):
-            if (dia1 < dia2):
-                mayor = _fecha2
-    return mayor
-
-
-def dias_entre(_fecha1,_fecha2):
-    '''
-    Dadas dos fechas válidas, f1 y f2, sin importar si f1 ≤ f2 o 
-    f2 ≤ f1, determinar el número de días naturales entre las dos fechas. 
-    Si f1 = f2, entonces días_entre(f1, f2) = 0. El resultado debe ser un 
-    número entero no negativo.
-    '''
-
-    if not fecha_es_valida(_fecha1) or not fecha_es_valida(_fecha2):
-        return -1
-
-    fechaLimite = obtener_fecha_mayor(_fecha1,_fecha2)
-    if (fechaLimite == _fecha2):
-        fechaBase = _fecha1
-    else:
-        fechaBase = _fecha2
-
-    dias = 0
-
-    while (fechaBase != fechaLimite):
-        fechaBase = dia_siguiente(fechaBase)
-        dias += 1
-
-
-    return dias
-
-
-
-def dia_semana(_fecha):
-    ''' 
-    Dada una fecha válida, determinar el día de la semana que le corresponde 
-    en el calendario gregoriano, con la siguiente codificación: 0 = domingo, 
-    1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes, 6 = sábado. 
-    El resultado debe ser un número entero, conforme a la codificación indicada.
-    '''
-    if not fecha_es_valida(_fecha):
-        return -1
-
-    anho = _fecha[0]
-    mes = _fecha[1]
-    dia = _fecha[2]
-
-    t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
-    anho -= mes < 3
-    return (anho + int(anho/4) - int(anho/100) + int(anho/400) + t[mes-1] + dia) % 7
-#Fuente https://www.hackerearth.com/blog/algorithms/how-to-find-the-day-of-a-week/
-
-
-''' 
-def day_of_week(year, month, day):
-    t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
-    year -= month < 3
-    return (year + int(year/4) - int(year/100) + int(year/400) + t[month-1] + day) % 7
-
-'''
-
-f1 = (2012,11,5)
-f2 = (2018,11,2);
-#print(dias_entre(f1,f2))
-print(obtener_fecha_mayor(f1,f2))
 
 
