@@ -11,6 +11,8 @@ Roberto Rojas Segnini
 
 
 04/08/2019
+Update 
+20/04/2019
 '''
 import math
 
@@ -197,13 +199,13 @@ def imprimir_3x4(_anho):
     imprimir(meses, 7)
 
 
-def imprimir(meses,mes_inicial):
+def imprimir(_meses,_mes_inicial):
     cont_meses = 0
 
     #for i in range(mes_inicial,mes_final):
 
     for j in range(0,6):
-        w = (meses[mes_inicial][j] + meses[mes_inicial+2][j] + meses[mes_inicial+3][j] + meses[mes_inicial+4][j])
+        w = (_meses[_mes_inicial][j] + _meses[_mes_inicial+2][j] + _meses[_mes_inicial+3][j] + _meses[_mes_inicial+4][j])
         result = ""
         for dia in w:
             if dia == 0:
@@ -314,6 +316,6 @@ def day_of_week(year, month, day):
 f1 = (2012,11,5)
 f2 = (2018,11,2);
 #print(dias_entre(f1,f2))
-print(obtener_fecha_mayor(f1,f2))
+print(obtener_fecha_mayor(f2,f1))
 
 
