@@ -314,6 +314,12 @@ def day_of_week(year, month, day):
 '''
 
 
+
+#Esta funcion es casi identica a la funcion dia_primero_enero(anho)
+#de la Asignacion3a. La diferencia radica en que dia_primero_enero(anho)
+#tenia ciertos valores "hardcoded" especificos para el mes de enero.
+#En esta nueva funcion, dia_inicio_mes(anho, mes), se generalizo
+#el algoritmo
 def dia_inicio_mes(anho, mes):
 #Fuente: https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
     m_offset = [0,11,12,1,2,3,4,5,6,7,8,9,10]
@@ -338,6 +344,14 @@ f1 = (2012,11,5)
 f2 = (2018,11,2);
 #print(dias_entre(f1,f2))
 print(obtener_fecha_mayor(f2,f1))
+
+#Pruebas para dia_inicio_mes(anho, mes)
 print(dia_inicio_mes(2000,1))
+print(dia_inicio_mes(2019,5))
+print(dia_inicio_mes(2019,4))
+print(dia_inicio_mes(2019,1))
+print(dia_inicio_mes(2018,5))
+print(dia_inicio_mes(2018,1))
+
 
 
