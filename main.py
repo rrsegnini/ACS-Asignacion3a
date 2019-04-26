@@ -313,9 +313,31 @@ def day_of_week(year, month, day):
 
 '''
 
+
+def dia_inicio_mes(anho, mes):
+#Fuente: https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
+    m_offset = [0,11,12,1,2,3,4,5,6,7,8,9,10]
+    anho -= mes < 3
+    
+    k = 1   #dia
+    m = m_offset[mes]  #mes
+    C = float((anho//100) + 0)  #siglo - 1
+    #if mes == 1 or mes == 2:
+    #    Y -= 1
+    Y = float((anho)%100)     #anho
+    
+
+    
+
+
+    W = (k + math.floor(2.6 * m - 0.2) - 2*C + Y + math.floor(Y/4) + math.floor(C/4))%7
+    return int(W)
+
+
 f1 = (2012,11,5)
 f2 = (2018,11,2);
 #print(dias_entre(f1,f2))
 print(obtener_fecha_mayor(f2,f1))
+print(dia_inicio_mes(2000,1))
 
 
