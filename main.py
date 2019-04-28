@@ -1,6 +1,6 @@
 '''
 
-Asignacion #3a
+Asignacion #3b
 
 
 CALENDARIO GREGORIANO
@@ -332,26 +332,117 @@ def dia_inicio_mes(anho, mes):
     #    Y -= 1
     Y = float((anho)%100)     #anho
     
-
-    
-
-
     W = (k + math.floor(2.6 * m - 0.2) - 2*C + Y + math.floor(Y/4) + math.floor(C/4))%7
     return int(W)
 
 
+
+
+
+
+#########################################################
+#Pruebas para dia_semana(_fecha)
+print("dia_semana")
+####Sabado
+print(dia_semana((2019,4,27)))
+
+
+####Domingo en enero
+print(dia_semana((2019,1,6)))
+
+####Lunes en febrero
+print(dia_semana((2019,2,25)))
+
+####Miercoles
+print(dia_semana((2019,12,25)))
+
+print("------------------------------------")
+
+
+#########################################################
+#Pruebas para fecha_futura(_fecha,_dias)
+print("fecha_futura")
+
+####Dentro del mismo mes
+print(fecha_futura((2019,4,27),3))
+
+###Cambio de mes
+print(fecha_futura((2018,3,30),5))
+
+####Cambio de año
+print(fecha_futura((2000,12,31),1))
+
+
+
+#########################################################
+print("------------------------------------")
+
+#Pruebas para obtener_fecha_mayor(_fecha1,_fecha2)
+print("obtener_fecha_mayor")
+
+####Primera fecha anterior a la segunda
 f1 = (2012,11,5)
-f2 = (2018,11,2);
-#print(dias_entre(f1,f2))
+f2 = (2018,11,2)
 print(obtener_fecha_mayor(f2,f1))
 
+
+####Segunda fecha anterior a la primera
+f1 = (2019,10,5)
+f2 = (1998,3,31)
+print(obtener_fecha_mayor(f2,f1))
+
+####Fechas iguales
+f1 = (2018,11,5)
+f2 = (2018,11,5)
+print(obtener_fecha_mayor(f2,f1))
+
+print("------------------------------------")
+
+
+
+#########################################################
+#Pruebas para dias_entre(_fecha1,_fecha2)
+print("dias_entre")
+
+####Primera fecha anterior a la segunda
+f1 = (2012,11,5)
+f2 = (2018,11,2);
+print(dias_entre(f1,f2))
+
+
+####Primera fecha mayor a la segunda
+f1 = (2020,11,5)
+f2 = (2018,11,2);
+print(dias_entre(f1,f2))
+
+####Fechas iguales
+f1 = (2018,11,2)
+f2 = (2018,11,2);
+print(dias_entre(f1,f2))
+
+####Año no-bisiesto
+f1 = (2017,12,31)
+f2 = (2017,1,1);
+print(dias_entre(f1,f2))
+
+####Año bisiesto
+f1 = (2016,1,1)
+f2 = (2016,12,31);
+print(dias_entre(f1,f2))
+
+print("------------------------------------")
+
+#########################################################
+
 #Pruebas para dia_inicio_mes(anho, mes)
+print("dia_inicio_mes")
 print(dia_inicio_mes(2000,1))
 print(dia_inicio_mes(2019,5))
 print(dia_inicio_mes(2019,4))
 print(dia_inicio_mes(2019,1))
 print(dia_inicio_mes(2018,5))
 print(dia_inicio_mes(2018,1))
+print("------------------------------------")
 
 
 
